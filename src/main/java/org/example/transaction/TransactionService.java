@@ -4,6 +4,7 @@ import org.example.customer.Customer;
 import org.springframework.stereotype.Service;
 
 import java.time.Month;
+import java.time.Period;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,10 @@ public class TransactionService {
 
     public List<Transaction> getAllTransactions() {
         return transactionRepository.getAllTransactions();
+    }
+
+    public List<Transaction> getAllTransactionsWithinPeriod(Period period) {
+        return transactionRepository.getAllTransactionsWithinPeriod(period);
     }
 
     public Map<Customer, Map<Month, List<Transaction>>> getAllCustomerMonthlyTransactions() {

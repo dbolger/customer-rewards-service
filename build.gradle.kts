@@ -1,6 +1,7 @@
 plugins {
     id("java")
     id("war")
+    id("groovy")
 }
 
 group = "org.example"
@@ -19,6 +20,9 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-data-jpa-test")
     testImplementation("org.springframework.boot:spring-boot-starter-restclient-test")
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+    implementation(platform("org.spockframework:spock-bom:2.5-groovy-6.0"))
+    testImplementation("org.spockframework:spock-core:2.5-groovy-6.0")
+    testImplementation("org.apache.groovy:groovy:6.0.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
