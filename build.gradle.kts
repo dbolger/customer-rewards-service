@@ -24,6 +24,7 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.5-groovy-6.0")
     testImplementation("org.apache.groovy:groovy:6.0.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation("org.slf4j:slf4j-api:2.0.20")
 }
 
 tasks.withType<Test> {

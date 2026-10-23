@@ -1,6 +1,8 @@
 package org.example.transaction;
 
 import org.example.customer.Customer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.Month;
@@ -11,6 +13,7 @@ import java.util.Map;
 @Service
 public class TransactionService {
 
+    private static final Logger log = LoggerFactory.getLogger(TransactionService.class);
     private final TransactionRepository transactionRepository;
 
     public TransactionService(TransactionRepository transactionRepository) {
@@ -22,7 +25,10 @@ public class TransactionService {
     }
 
     public List<Transaction> getAllTransactionsWithinPeriod(Period period) {
-        return transactionRepository.getAllTransactionsWithinPeriod(period);
+        log.info("Finding all transactions within the period {}", period);
+        List<Transaction> allTransactionsWithinPeriod = transactionRepository.getAllTransactionsWithinPeriod(period);
+        log.info("Found {} transactions within period", allTransactionsWithinPeriod.size());
+        return allTransactionsWithinPeriod;
     }
 
     public Map<Customer, Map<Month, List<Transaction>>> getAllCustomerMonthlyTransactions() {
